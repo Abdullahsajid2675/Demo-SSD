@@ -2,11 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Unsafe Groovy Code') {
+        stage('Safe Groovy Code') {
             steps {
-                script {
-                    new File("/etc/passwd").text
-                }
+                echo "Safe operation allowed"
             }
         }
     }
