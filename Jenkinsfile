@@ -2,34 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Credentials Test') {
             steps {
-                echo 'Building..'
+                withCredentials([string(credentialsId: 'mysecret', variable: 'API')]) {
+                    echo "Using secret safely"
+                }
             }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying..'
-            }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline completed'
-        }
-        success {
-            echo 'Pipeline executed successfully'
-        }
-        failure {
-            echo 'Pipeline failed'
         }
     }
 }
