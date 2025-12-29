@@ -20,4 +20,16 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            echo 'Pipeline completed'
+        }
+        success {
+            echo 'Pipeline executed successfully'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
+    }
 }
